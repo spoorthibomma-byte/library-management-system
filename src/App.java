@@ -6,13 +6,16 @@ public class App {
         ArrayList<Book> books = new ArrayList<>();
         Scanner sc = new Scanner(System.in);
         int nextId = 1;
-
+        ArrayList<Member> members = new ArrayList<>();
+        int nextMemberId = 1;
         while (true) {
             System.out.println("\n--- Library Menu ---");
             System.out.println("1. Add book");
             System.out.println("2. View all books");
             System.out.println("3. Search book by title");
-            System.out.println("4. Exit");
+            System.out.println("4. Register member");
+            System.out.println("5. View all members");
+            System.out.println("6. Exit");
             System.out.print("Choose: ");
             int choice = sc.nextInt();
             sc.nextLine(); // clears the leftover newline
@@ -48,6 +51,19 @@ public class App {
                 System.out.println("No match found.");
                 }
             } else if (choice == 4) {
+                System.out.print("Name: ");
+                String name = sc.nextLine();
+                members.add(new Member(nextMemberId++, name));
+                System.out.println("Member registered.");
+            } else if (choice == 5) {
+                    if (members.isEmpty()) {
+                        System.out.println("No members yet.");
+                    } else {
+                        for (Member m : members) {
+                            System.out.println(m);
+                        }
+                    }
+            } else if (choice == 6) {
                 System.out.println("Goodbye!");
                 break;
             } else {
